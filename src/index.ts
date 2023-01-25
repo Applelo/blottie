@@ -1,15 +1,10 @@
 import { App } from 'vue'
-// import ZAvant from './components/ZAvant.vue'
-// import ZAvantMenu from './components/ZAvantMenu.vue'
-// import ZAvantItem from './components/ZAvantItem.vue'
+import Blottie from './components/Blottie.vue'
 
-const Blottie = {
+const plugin = {
   install(app: App) {
-    // app.component('ZAvant', ZAvant)
-    // app.component('ZAvantMenu', ZAvantMenu)
-    // app.component('ZAvantItem', ZAvantItem)
+    app.component('Blottie', Blottie)
   }
 }
 
-// export { ZAvant, ZAvantMenu, ZAvantItem }
-export { Blottie }
+export { plugin, Blottie }
