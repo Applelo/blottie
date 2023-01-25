@@ -19,13 +19,27 @@ const props = withDefaults(
      */
     containerTag?: string;
 
-    // lottie player option
+    /**
+     * The relative path to the animation object
+     */
     path?: string;
-    data?: string;
+    /**
+     * An Object with the exported animation data.
+     */
+    animationData?: any;
+    /**
+     * 'svg' / 'canvas' / 'html' to set the renderer
+     */
     renderer?: RendererType;
     loop?: boolean | number;
+    /**
+     * Start playing as soon as it is ready
+     */
     autoplay?: boolean;
     initialSegment?: AnimationSegment;
+    /**
+     * Animation name for future reference
+     */
     name?: string;
     assetsPath?: string;
     rendererSettings?: {
