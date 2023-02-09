@@ -1,18 +1,24 @@
 # Blottie
 
-> Lottie for VueJS 3 / Nuxt 3
+> Lottie component for VueJS 3 / Nuxt 3
 
 Blottie is the verb `blottir` in french meaning `snuggle` (yes I was looking for a word to respect the Vue tradition).
 
 ## Why?
 
-LottieFiles provides a player named [lottie-player](https://github.com/LottieFiles/lottie-player) but it was not light enought for my need.
+Lottie is a great library allowing designer to make an animation on after effects and export it to the web.
+
+> If you don't know what is lottie, check the [official website](https://airbnb.io/lottie/#/).
+
+But the integration is not easy on VueJS and I needed one for a company project. So I was looking for a VueJS 3 library.
+
+LottieFiles provides a player named [lottie-player](https://github.com/LottieFiles/lottie-player) but it was not light enought for my need and It was not customizable enough. If you don't find suitable for you need, make your own component 🤓
 
 ## Features
 
-- 🔥 Use all Lottie props
-- 🚀 Load the correct renderer : you can't be lighter (with Lottie and SVG renderer 😝)
-- ✨ Expose lottie player and lottie animation
+- 🔥 Integrated in VueJS with all Lottie `loadAnimations` options
+- 🚀 Load the correct renderer : you can't be lighter
+- ✨ Expose lottie player and lottie animation for more control and customization
 
 ## Installation
 
@@ -56,19 +62,19 @@ const onReady = (anim: AnimationItem) => {
 ```
 
 **It is recommended to use the renderer option to use the correct version of Lottie.**
-If you don't use the renderer prop, it will use the default LottiePlayer which can be a little heavier in size.
+If you don't use the renderer prop, it will use the default LottiePlayer which can be a little heavier in size. The lighter option provided by Lottie is the `svg` one.
 
 > Check the [demo](https://github.com/Applelo/blottie/blob/main/demo/src/App.vue) folder for examples of usage.
 
 ### Props
 
-The Blottie component accept all [loadAnimation options](https://github.com/airbnb/lottie-web#other-loading-options). You can pass a Lottie Animation JSON via the `path` prop (relative or absolute link) or directly by importing the json file as an object in the `animation-data` prop.
+The Blottie component accepts all [loadAnimation options](https://github.com/airbnb/lottie-web#other-loading-options). You can pass a Lottie Animation JSON via the `path` prop (relative or absolute link) or directly by importing the json file as an object in the `animation-data` prop.
 
 The additional prop `container-tag` is available to change the default `div` tag container.
 
 ### Events
 
-The Blottie component exposes 2 events. The first one, `ready`, allows you to do some action when Lottie is ready to play your animation. The second is `frame`, allowing you to access the event on each frame.
+The Blottie component exposes 2 events. The first one, `ready`, allows you to know when Lottie is ready to play your animation. The second is `frame` which trigger an event on each frame played.
 
 Each events passing an argument `anim` allowing you to control your animation.
 
