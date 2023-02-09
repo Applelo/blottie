@@ -95,6 +95,6 @@ defineExpose({ anim, lottie, container });
 
 <template>
   <component :is="containerTag" ref="container">
-    <slot v-if="pending" name="pending" />
+    <slot v-if="pending" name="loading" />
   </component>
 </template>

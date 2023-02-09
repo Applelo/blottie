@@ -39,3 +39,5 @@ const blottie = ref<{ anim: AnimationItem }>();
   <Blottie ref="blottie" @ready="onReady" @frame="onFrame" />
 </template>
 ```
+
+Check the [demo](https://github.com/Applelo/blottie/tree/main/demo) folder for example.

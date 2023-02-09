@@ -37,7 +37,7 @@ const onReady = (anim: AnimationItem) => {
       :loop="true"
       container-tag="main"
     >
-      <template #pending> Loading... </template>
+      <template #loading> Loading... </template>
     </Blottie>
 
     <h2>Loading from data with controls</h2>
