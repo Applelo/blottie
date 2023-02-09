@@ -64,14 +64,17 @@ const emit = defineEmits(["frame", "ready"]);
 const container = ref<HTMLElement>();
 const lottie = ref<LottiePlayer>();
 const anim = ref<AnimationItem>();
+const pending = ref<boolean>(true);
 
 onMounted(async () => {
   if (!container.value) return;
 
-  const lottieImport = props.renderer ? `lottie_${props.renderer}` : "lottie";
-  const lottie: LottiePlayer = (
-    await import(`lottie-web/build/player/${lottieImport}`)
-  ).default;
+  const lottieImport =
+    props.renderer && ["html", "svg"].includes(props.renderer)
+      ? props.renderer
+      : "default";
+  const lottie: LottiePlayer = (await import(`../lottie/${lottieImport}.ts`))
+    .default;
 
   const options = {
     container: container.value,
@@ -80,15 +83,18 @@ onMounted(async () => {
 
   anim.value = lottie.loadAnimation(options);
   emit("ready", anim.value);
+  pending.value = false;
 
   anim.value.addEventListener("enterFrame", () => {
     emit("frame", anim.value);
   });
 });
 
-defineExpose({ anim, lottie });
+defineExpose({ anim, lottie, container });
 </script>
 
 <template>
-  <component :is="containerTag" ref="container"></component>
+  <component :is="containerTag" ref="container">
+    <slot v-if="pending" name="pending" />
+  </component>
 </template>
