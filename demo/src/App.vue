@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import type { AnimationItem } from "lottie-web";
+import type { AnimationItem, LottiePlayer } from "lottie-web";
 import { ref } from "vue";
 import { Blottie } from "./../../src";
 import animVueJS from "./assets/vue-js.json";
 
 const frame = ref(0);
 const animationData = ref(animVueJS);
-const blottie = ref<{ anim: AnimationItem; container: HTMLElement }>();
+const blottie = ref<{
+  anim: AnimationItem | undefined;
+  lottie: LottiePlayer | undefined;
+  container: HTMLElement | undefined;
+}>();
 
 const onFrame = (anim: AnimationItem) => {
   frame.value = Math.round(anim.currentFrame);
@@ -49,16 +53,16 @@ const onReady = (anim: AnimationItem) => {
     />
     <div class="controls" v-if="blottie && blottie.anim">
       <progress
-        :value="blottie.anim.currentFrame"
-        :max="blottie.anim.totalFrames"
+        :value="blottie.anim?.currentFrame"
+        :max="blottie.anim?.totalFrames"
       />
-      <button @click="blottie?.anim.play()">Play</button>
-      <button @click="blottie?.anim.pause()">Pause</button>
-      <button @click="blottie?.anim.stop()">Stop</button>
+      <button @click="blottie?.anim?.play()">Play</button>
+      <button @click="blottie?.anim?.pause()">Pause</button>
+      <button @click="blottie?.anim?.stop()">Stop</button>
       <button
         @click="
-          blottie?.anim.setDirection(
-            blottie?.anim.playDirection === -1 ? 1 : -1
+          blottie?.anim?.setDirection(
+            blottie?.anim?.playDirection === -1 ? 1 : -1
           )
         "
       >
