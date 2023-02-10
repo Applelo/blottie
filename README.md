@@ -61,7 +61,7 @@ const onReady = (anim: AnimationItem) => {
 </template>
 ```
 
-**It is recommended to use the renderer option to use the correct version of Lottie.**
+**It is recommended to use the renderer option to use the correct version of Lottie to reduce the size of Lottie.**
 If you don't use the renderer prop, it will use the default LottiePlayer which can be a little heavier in size. The lighter option provided by Lottie is the `svg` one.
 
 > Check the [demo](https://github.com/Applelo/blottie/blob/main/demo/src/App.vue) folder for examples of usage.
@@ -70,7 +70,9 @@ If you don't use the renderer prop, it will use the default LottiePlayer which c
 
 The Blottie component accepts all [loadAnimation options](https://github.com/airbnb/lottie-web#other-loading-options). You can pass a Lottie Animation JSON via the `path` prop (relative or absolute link) or directly by importing the json file as an object in the `animation-data` prop.
 
-The additional prop `container-tag` is available to change the default `div` tag container.
+By default, Blottie will load the lighter version of Lottie for the renderer you choose. If necessary, you can enforce the lottie player with the `player` option : `canvas_worker`, `canvas`, `light_canvas`, `html`, `light_html`, `light`, `svg`, `worker` or `default`.
+
+An additional prop `container-tag` is available to change the default `div` tag container.
 
 ### Events
 

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
 import type {
   AnimationItem,
   AnimationSegment,
@@ -9,6 +8,9 @@ import type {
   RendererType,
   SVGRendererConfig,
 } from "lottie-web";
+import type { BlottiePlayer } from "./../typings/blottie";
+import { ref, onMounted } from "vue";
+import getPlayer from "./../utils/getPlayer";
 
 const props = withDefaults(
   defineProps<{
@@ -18,7 +20,12 @@ const props = withDefaults(
      * @default 'div'
      */
     containerTag?: string;
-
+    /**
+     * Lottie player loaded by Blottie
+     *
+     * @default 'undefined'
+     */
+    player?: BlottiePlayer;
     /**
      * The relative path to the animation object
      */
@@ -69,19 +76,14 @@ const pending = ref<boolean>(true);
 onMounted(async () => {
   if (!container.value) return;
 
-  const lottieImport =
-    props.renderer && ["html", "svg"].includes(props.renderer)
-      ? props.renderer
-      : "default";
-  const lottie: LottiePlayer = (await import(`../lottie/${lottieImport}.ts`))
-    .default;
+  lottie.value = await getPlayer(props.renderer, props.player);
 
   const options = {
     container: container.value,
     ...props,
   };
 
-  anim.value = lottie.loadAnimation(options);
+  anim.value = lottie.value.loadAnimation(options);
   emit("ready", anim.value);
   pending.value = false;
 
