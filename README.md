@@ -101,9 +101,9 @@ import { ref } from 'vue'
 import { Blottie } from 'blottie'
 
 const blottie = ref<{
-  anim: AnimationItem | undefined
-  lottie: LottiePlayer | undefined
-  container: HTMLElement | undefined
+  anim?: AnimationItem
+  lottie?: LottiePlayer
+  container?: HTMLElement
 }>()
 </script>
 

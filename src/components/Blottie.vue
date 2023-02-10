@@ -184,15 +184,12 @@ onMounted(async () => {
   emit('ready', anim.value, lottie.value, container.value)
   pending.value = false
 
-  for (const lottieEvent in events) {
-    if (Object.prototype.hasOwnProperty.call(events, lottieEvent)) {
-      const event = events[lottieEvent]
-      anim.value.addEventListener(lottieEvent as AnimationEventName, () => {
-        // @ts-ignore
-        emit(event, anim.value, lottie.value, container.value)
-      })
-    }
-  }
+  events.forEach(event => {
+    anim.value?.addEventListener(event, () => {
+      //@ts-ignore
+      emit(event, anim.value, lottie.value, container.value)
+    })
+  })
 })
 
 onUnmounted(() => {

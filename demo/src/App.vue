@@ -7,15 +7,15 @@ import animVueJS from './assets/vue-js.json'
 const frame = ref(0)
 const animationData = ref(animVueJS)
 const blottie = ref<{
-  anim: AnimationItem | undefined
-  lottie: LottiePlayer | undefined
-  container: HTMLElement | undefined
+  anim?: AnimationItem
+  lottie?: LottiePlayer
+  container?: HTMLElement
 }>()
 
-const onFrame = (anim: AnimationItem | undefined) => {
+const onFrame = (anim?: AnimationItem) => {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
-const onReady = (anim: AnimationItem | undefined) => {
+const onReady = (anim?: AnimationItem | undefined) => {
   anim?.play()
 }
 </script>
