@@ -25,7 +25,8 @@
     "preview": "vite preview",
     "lint": "prettier -c .",
     "lint:fix": "prettier --write --cache .",
-    "prepublishOnly": "pnpm build"
+    "prepublishOnly": "pnpm build",
+    "cypress": "cypress run --component"
   },
   "keywords": [
     "lottie",
@@ -39,6 +40,7 @@
   ],
   "author": "Applelo",
   "dependencies": {
+    "cypress": "^12.5.1",
     "lottie-web": "^5.10.2",
     "vue": "^3.2.47"
   },

@@ -16,9 +16,10 @@ LottieFiles provides a player named [lottie-player](https://github.com/LottieFil
 
 ## Features
 
-- 🔥 Integrated in VueJS with all Lottie `loadAnimations` options
-- 🚀 Load the correct renderer : you can't be lighter
-- ✨ Expose lottie player and lottie animation for more control and customization
+- 🔥 Integrated with VueJS with all Lottie `loadAnimations` [options](https://github.com/airbnb/lottie-web#other-loading-options) and [events](https://github.com/airbnb/lottie-web#events)
+- 🚀 Load automatically the best renderer : you can't be lighter
+- 📠 Fully typed
+- ✨ Expose lottie player/animation for more control and customization
 
 ## Installation
 
@@ -41,11 +42,11 @@ import { Blottie } from 'blottie'
 
 const blottie = ref<{ anim: AnimationItem }>()
 
-const onFrame = (anim: AnimationItem) => {
-  frame.value = Math.round(anim.currentFrame)
+const onFrame = (anim?: AnimationItem) => {
+  frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
-const onReady = (anim: AnimationItem) => {
-  anim.play()
+const onReady = (anim?: AnimationItem) => {
+  anim?.play()
 }
 </script>
 
