@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import type { AnimationItem, LottiePlayer } from "lottie-web";
-import { ref } from "vue";
-import { Blottie } from "./../../src";
-import animVueJS from "./assets/vue-js.json";
+import type { AnimationItem, LottiePlayer } from 'lottie-web'
+import { ref } from 'vue'
+import { Blottie } from './../../src'
+import animVueJS from './assets/vue-js.json'
 
-const frame = ref(0);
-const animationData = ref(animVueJS);
+const frame = ref(0)
+const animationData = ref(animVueJS)
 const blottie = ref<{
-  anim: AnimationItem | undefined;
-  lottie: LottiePlayer | undefined;
-  container: HTMLElement | undefined;
-}>();
+  anim: AnimationItem | undefined
+  lottie: LottiePlayer | undefined
+  container: HTMLElement | undefined
+}>()
 
-const onFrame = (anim: AnimationItem) => {
-  frame.value = Math.round(anim.currentFrame);
-};
-const onReady = (anim: AnimationItem) => {
-  anim.play();
-};
+const onFrame = (anim: AnimationItem | undefined) => {
+  frame.value = Math.round(anim ? anim.currentFrame : 0)
+}
+const onReady = (anim: AnimationItem | undefined) => {
+  anim?.play()
+}
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const onReady = (anim: AnimationItem) => {
     <Blottie
       class="animation"
       path="vue-js.json"
-      @frame="onFrame"
+      @enter-frame="onFrame"
       :autoplay="true"
       :loop="true"
       renderer="html"

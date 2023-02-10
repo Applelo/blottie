@@ -1,5 +1,5 @@
 // import { App } from "vue";
-import Blottie from "./components/Blottie.vue";
+import Blottie from './components/Blottie.vue'
 
 // const plugin = {
 //   install(app: App) {
@@ -7,4 +7,4 @@ import Blottie from "./components/Blottie.vue";
 //   }
 // }
 
-export { Blottie };
+export { Blottie }

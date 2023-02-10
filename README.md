@@ -36,24 +36,24 @@ pnpm add -D blottie
 
 ```vue
 <script setup lang="ts">
-import type { AnimationItem } from "lottie-web";
-import { Blottie } from "blottie";
+import type { AnimationItem } from 'lottie-web'
+import { Blottie } from 'blottie'
 
-const blottie = ref<{ anim: AnimationItem }>();
+const blottie = ref<{ anim: AnimationItem }>()
 
 const onFrame = (anim: AnimationItem) => {
-  frame.value = Math.round(anim.currentFrame);
-};
+  frame.value = Math.round(anim.currentFrame)
+}
 const onReady = (anim: AnimationItem) => {
-  anim.play();
-};
+  anim.play()
+}
 </script>
 
 <template>
   <Blottie
     ref="blottie"
     @ready="onReady"
-    @frame="onFrame"
+    @enter-frame="onFrame"
     :loop="true"
     renderer="svg"
     path="/my-lottie-anim.json"
@@ -76,16 +76,18 @@ An additional prop `container-tag` is available to change the default `div` tag 
 
 ### Events
 
-The Blottie component exposes 2 events. The first one, `ready`, allows you to know when Lottie is ready to play your animation. The second is `frame` which trigger an event on each frame played.
-
-Each events passing an argument `anim` allowing you to control your animation.
+The Blottie component exposes all [lottie events](https://github.com/airbnb/lottie-web#events). On each events, you can access to `anim` allowing you to control your animation, `lottie` to control the player and the HTML `container`.
 
 ```ts
-import type { AnimationItem } from "lottie-web";
+import type { AnimationItem, LottiePlayer } from 'lottie-web'
 
-const onFrame = (anim: AnimationItem) => {
-  frame.value = Math.round(anim.currentFrame);
-};
+const onFrame = (
+  anim?: AnimationItem,
+  lottie?: LottiePlayer,
+  container?: HTMLElement
+) => {
+  frame.value = Math.round(anim ? anim.currentFrame : 0)
+}
 ```
 
 ### Expose LottiePlayer / Anim / Container
@@ -94,15 +96,15 @@ You can access to all the Blottie data (lottie player, animation and container) 
 
 ```vue
 <script setup lang="ts">
-import type { AnimationItem, LottiePlayer } from "lottie-web";
-import { ref } from "vue";
-import { Blottie } from "blottie";
+import type { AnimationItem, LottiePlayer } from 'lottie-web'
+import { ref } from 'vue'
+import { Blottie } from 'blottie'
 
 const blottie = ref<{
-  anim: AnimationItem | undefined;
-  lottie: LottiePlayer | undefined;
-  container: HTMLElement | undefined;
-}>();
+  anim: AnimationItem | undefined
+  lottie: LottiePlayer | undefined
+  container: HTMLElement | undefined
+}>()
 </script>
 
 <template>

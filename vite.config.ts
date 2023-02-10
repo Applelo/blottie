@@ -1,33 +1,33 @@
-import { resolve } from "path";
-import { URL, fileURLToPath } from "url";
-import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
+import { resolve } from 'path'
+import { URL, fileURLToPath } from 'url'
+import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "blottie",
-      fileName: "blottie",
+      entry: resolve(__dirname, 'src/index.ts'),
+      name: 'blottie',
+      fileName: 'blottie'
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["vue"],
+      external: ['vue', /lottie-web/],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          vue: "Vue",
-        },
-      },
-    },
+          vue: 'Vue'
+        }
+      }
+    }
   },
   plugins: [vue()],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-    },
-  },
-});
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
+})
