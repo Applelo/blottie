@@ -1,5 +1,5 @@
 import type { LottiePlayer, RendererType } from 'lottie-web'
-import { BlottiePlayer } from './../typings/blottie'
+import { BlottiePlayer } from '../typings/blottie'
 
 export default async (renderer?: RendererType, player?: BlottiePlayer) => {
   let lottie: LottiePlayer | null = null

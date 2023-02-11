@@ -9,7 +9,7 @@ import type {
   RendererType,
   SVGRendererConfig
 } from 'lottie-web'
-import type { BlottiePlayer } from './../typings/blottie'
+import type { BlottiePlayer } from '../typings/blottie'
 import { ref, onMounted, onUnmounted } from 'vue'
 import getPlayer from './../utils/getPlayer'
 
