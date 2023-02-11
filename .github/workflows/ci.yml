@@ -12,7 +12,7 @@ on:
 jobs:
   cypress:
     runs-on: ubuntu-latest
-    name: 'Lint: node-16, ubuntu-latest'
+    name: 'Cypress: node-16, ubuntu-latest'
 
     steps:
       - uses: actions/checkout@v3
