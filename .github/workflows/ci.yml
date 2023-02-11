@@ -27,10 +27,16 @@ jobs:
           node-version: 16
           cache: pnpm
 
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-cypress-
+
       - name: Install
-        run: |
-          pnpm cypress install
-          pnpm install
+        run: pnpm install
 
       - name: Build
         run: pnpm build
