@@ -33,7 +33,7 @@ jobs:
           path: ~/.cache/Cypress
           key: cypress-${{ hashFiles('**/package.json') }}
           restore-keys: |
-            cypress-${{ runner.os }}-cypress-
+            cypress-${{ runner.os }}-cypress
 
       - name: Install
         run: pnpm install

@@ -4,6 +4,13 @@
   "version": "1.0.0",
   "license": "GPL-3.0",
   "description": "Lottie component for VueJS 3 / Nuxt 3 ",
+  "author": "Applelo",
+  "homepage": "https://github.com/Applelo/blottie",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Applelo/blottie"
+  },
+  "bugs": "https://github.com/Applelo/blottie/issues",
   "main": "./dist/blottie.umd.cjs",
   "module": "./dist/blottie.js",
   "engines": {
@@ -41,9 +48,7 @@
     "ts",
     "type"
   ],
-  "author": "Applelo",
   "dependencies": {
-    "cypress": "^12.5.1",
     "lottie-web": "^5.10.2",
     "vue": "^3.2.47"
   },
@@ -53,6 +58,7 @@
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "@vitejs/plugin-vue": "^4.0.0",
+    "cypress": "^12.5.1",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-define-config": "^1.15.0",
@@ -64,6 +70,7 @@
     "vite": "^4.1.1",
     "vue-tsc": "^1.0.24"
   },
+  "packageManager": "pnpm@7.3.0",
   "publishConfig": {
     "access": "public"
   }

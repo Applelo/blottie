@@ -1,18 +1,10 @@
+[![npm](https://img.shields.io/npm/v/blottie)](https://www.npmjs.com/package/blottie) [![node-current](https://img.shields.io/node/v/blottie)](https://nodejs.org/)
+
 # Blottie
 
 > Lottie component for VueJS 3 / Nuxt 3
 
 Blottie is the verb `blottir` in french meaning `snuggle` (yes I was looking for a word to respect the Vue tradition).
-
-## Why?
-
-Lottie is a great library allowing designer to make an animation on after effects and export it to the web.
-
-> If you don't know what is lottie, check the [official website](https://airbnb.io/lottie/#/).
-
-But the integration is not easy on VueJS and I needed one for a company project. So I was looking for a VueJS 3 library.
-
-LottieFiles provides a player named [lottie-player](https://github.com/LottieFiles/lottie-player) but it was not light enought for my need and It was not customizable enough. If you don't find suitable for you need, make your own component 🤓
 
 ## Features
 
@@ -149,3 +141,17 @@ You can use the slot `loading` to insert content inside the container to wait th
   </Blottie>
 </template>
 ```
+
+## Why?
+
+Lottie is a great library allowing designer to make an animation on after effects and export it to the web.
+
+> If you don't know what is lottie, check the [official website](https://airbnb.io/lottie/#/).
+
+But the integration is not easy on VueJS and I needed one for a company project. So I was looking for a VueJS 3 library.
+
+LottieFiles provides a player named [lottie-player](https://github.com/LottieFiles/lottie-player) but it was not light enought for my need and It was not customizable enough : if you don't find suitable for you need, make your own component 🤓
+
+## 👨‍💼 Licence
+
+GPL-3.0
