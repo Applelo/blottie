@@ -29,8 +29,8 @@ jobs:
 
       - name: Install
         run: |
-          pnpm install
           pnpm cypress install
+          pnpm install
 
       - name: Build
         run: pnpm build
