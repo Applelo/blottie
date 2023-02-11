@@ -15,16 +15,33 @@ jobs:
     name: 'Cypress: node-16, ubuntu-latest'
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2.2.4
         with:
-          component: true
-        env:
-          DEBUG: '@cypress/github-action'
+          version: 7
+
+      - name: Set node version to 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+
+      - name: Cache Cypress Binary
+        id: cache-cypress-binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: binary-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Install
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm cypress
 
   lint:
     runs-on: ubuntu-latest
