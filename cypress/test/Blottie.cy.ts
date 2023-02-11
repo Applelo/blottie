@@ -30,6 +30,26 @@ describe('<Blottie />', () => {
     }
   }
 
+  it('slot', () => {
+    cy.mount(Blottie, {
+      attrs: {
+        class: 'animation'
+      },
+      props: {
+        autoplay: true,
+        loop: true,
+        animationData:
+          'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
+        renderer: 'svg'
+      },
+      slots: {
+        loading: 'Loading...'
+      }
+    })
+
+    cy.get('.animation').should('have.text', 'Loading...')
+  })
+
   it('events', () => {
     const onReadySpy = cy.spy().as('onReadySpy')
     const onEnterFrameSpy = cy.spy().as('onEnterFrameSpy')
@@ -53,24 +73,5 @@ describe('<Blottie />', () => {
     cy.get('@onEnterFrameSpy').should('have.been.called')
     cy.get('@onDrawnFrameSpy').should('have.been.called')
     cy.get('@onLoopCompleteSpy').should('have.been.called')
-  })
-
-  it('slot', () => {
-    cy.mount(Blottie, {
-      attrs: {
-        class: 'animation'
-      },
-      props: {
-        autoplay: true,
-        loop: true,
-        animationData: animVueJS,
-        renderer: 'svg'
-      },
-      slots: {
-        loading: 'Loading...'
-      }
-    })
-
-    cy.get('.animation').should('have.text', 'Loading...')
   })
 })
