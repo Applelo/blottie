@@ -38,8 +38,7 @@ describe('<Blottie />', () => {
       props: {
         autoplay: true,
         loop: true,
-        animationData:
-          'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
+        path: 'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
         renderer: 'svg'
       },
       slots: {
