@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/blottie)](https://www.npmjs.com/package/blottie) [![node-current](https://img.shields.io/node/v/blottie)](https://nodejs.org/)
+[![npm](https://img.shields.io/npm/v/blottie)](https://www.npmjs.com/package/blottie) [![node-current](https://img.shields.io/node/v/blottie)](https://nodejs.org/) [![Blottie](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/simple/k3qz2d/main&style=flat&logo=cypress)](https://cloud.cypress.io/projects/k3qz2d/runs)
 
 # Blottie
 
