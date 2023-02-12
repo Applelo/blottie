@@ -40,7 +40,7 @@ jobs:
         run: pnpm build
 
       - name: Test
-        run: pnpm cypress
+        run: npx cypress run --record --key ${{ env.CYPRESS_KEY }}
 
   lint:
     runs-on: ubuntu-latest
