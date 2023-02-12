@@ -1,7 +1,7 @@
 {
   "name": "blottie",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "GPL-3.0",
   "description": "Lottie component for VueJS 3 / Nuxt 3 ",
   "author": "Applelo",
@@ -25,7 +25,7 @@
   "files": [
     "dist"
   ],
-  "types": "dist",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build && vue-tsc --emitDeclarationOnly",

@@ -1,3 +1,5 @@
+import type { AnimationItem, LottiePlayer } from 'lottie-web'
+
 export type BlottiePlayer =
   | 'canvas_worker'
   | 'canvas'
@@ -8,3 +10,9 @@ export type BlottiePlayer =
   | 'svg'
   | 'worker'
   | 'default'
+
+export interface BlottieExpose {
+  anim?: AnimationItem
+  lottie?: LottiePlayer
+  container?: HTMLElement
+}

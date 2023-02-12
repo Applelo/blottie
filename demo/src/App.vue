@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import type { AnimationItem, LottiePlayer } from 'lottie-web'
+import type { AnimationItem } from 'lottie-web'
 import { ref } from 'vue'
-import { Blottie } from './../../src'
+import { Blottie, type BlottieExpose } from './../..'
 import animVueJS from './assets/vue-js.json'
 
 const frame = ref(0)
 const animationData = ref(animVueJS)
-const blottie = ref<{
-  anim?: AnimationItem
-  lottie?: LottiePlayer
-  container?: HTMLElement
-}>()
+const blottie = ref<BlottieExpose>()
 
 const onFrame = (anim?: AnimationItem) => {
   frame.value = Math.round(anim ? anim.currentFrame : 0)

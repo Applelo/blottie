@@ -103,13 +103,9 @@ You can access to all the Blottie data (lottie player, animation and container) 
 <script setup lang="ts">
 import type { AnimationItem, LottiePlayer } from 'lottie-web'
 import { ref } from 'vue'
-import { Blottie } from 'blottie'
+import { Blottie, type BlottieExpose } from 'blottie'
 
-const blottie = ref<{
-  anim?: AnimationItem
-  lottie?: LottiePlayer
-  container?: HTMLElement
-}>()
+const blottie = ref<BlottieExpose>()
 </script>
 
 <template>

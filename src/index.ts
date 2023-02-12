@@ -1,10 +1,4 @@
-// import { App } from "vue";
 import Blottie from './components/Blottie.vue'
+import type { BlottieExpose, BlottiePlayer } from './typings/blottie'
 
-// const plugin = {
-//   install(app: App) {
-//     app.component('Blottie', Blottie)
-//   }
-// }
-
-export { Blottie }
+export { Blottie, BlottiePlayer, BlottieExpose }
