@@ -25,13 +25,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: pnpm
+          # cache: pnpm
 
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ hashFiles('**/package.json') }}
+      # - name: Cache Cypress binary
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.cache/Cypress
+      #     key: cypress-${{ hashFiles('**/package.json') }}
 
       - name: Install
         run: pnpm install
