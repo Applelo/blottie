@@ -30,9 +30,9 @@ pnpm add -D blottie
 ```vue
 <script setup lang="ts">
 import type { AnimationItem } from 'lottie-web'
-import { Blottie } from 'blottie'
+import { Blottie, type BlottieExpose } from 'blottie'
 
-const blottie = ref<{ anim: AnimationItem }>()
+const blottie = ref<BlottieExpose>()
 
 const onFrame = (anim?: AnimationItem) => {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
