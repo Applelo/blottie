@@ -71,6 +71,30 @@ By default, Blottie will load the lighter version (`light`) of Lottie for the re
 </template>
 ```
 
+If needed, you can access the lottie player before the lottie `loadAnimation` method. You can use the `before-init` prop allowing you to pass an asynchrone callback with the player as an argument (check the example below).
+
+This is necessary for allowing to use `setLocationHref` to [fix Safari issue](https://github.com/airbnb/lottie-web#issues).
+
+<script setup lang="ts">
+import type { LottiePlayer } from 'lottie-web'
+import { Blottie } from './../..'
+
+const beforeInit = async (player: LottiePlayer) => {
+  console.log(player)
+}
+</script>
+
+<template>
+  <div>
+    <Blottie
+      class="animation"
+      path="vue-js.json"
+      :before-init="beforeInit"
+      :autoplay="true"
+    />
+  </div>
+</template>
+
 An additional prop `container-tag` is available to change the default `div` tag container.
 
 ```vue

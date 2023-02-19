@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AnimationItem } from 'lottie-web'
+import type { AnimationItem, LottiePlayer } from 'lottie-web'
 import { ref } from 'vue'
 import { Blottie, type BlottieExpose } from './../..'
 import animVueJS from './assets/vue-js.json'
@@ -14,6 +14,10 @@ const onFrame = (anim?: AnimationItem) => {
 const onReady = (anim?: AnimationItem | undefined) => {
   anim?.play()
 }
+
+const beforeInit = async (player: LottiePlayer) => {
+  console.log(player)
+}
 </script>
 
 <template>
@@ -24,6 +28,7 @@ const onReady = (anim?: AnimationItem | undefined) => {
       class="animation"
       path="vue-js.json"
       @enter-frame="onFrame"
+      :before-init="beforeInit"
       :autoplay="true"
       :loop="true"
       renderer="html"

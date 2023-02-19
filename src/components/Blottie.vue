@@ -44,6 +44,14 @@ const props = withDefaults(
      */
     player?: BlottiePlayer
     /**
+     * Callback before loadAnimation allowing to setLocationHref to fix Safari issue
+     *
+     * @see https://github.com/airbnb/lottie-web#issues
+     * @default 'undefined'
+     */
+    beforeInit?: (lottie: LottiePlayer) => Promise<void>
+
+    /**
      * The relative path to the animation object
      */
     path?: string
@@ -174,6 +182,7 @@ onMounted(async () => {
   if (!container.value || typeof window === 'undefined') return
 
   lottie.value = await getPlayer(props.renderer, props.player)
+  if (props.beforeInit) await props.beforeInit(lottie.value)
 
   const options = {
     container: container.value,
