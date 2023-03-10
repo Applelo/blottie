@@ -30,8 +30,7 @@ describe('<Blottie />', () => {
     }
   }
 
-  // Not working every time due to inconcistence of loading time
-  it.skip('slot', () => {
+  it('slot', () => {
     cy.mount(Blottie, {
       attrs: {
         class: 'animation'
@@ -40,7 +39,14 @@ describe('<Blottie />', () => {
         autoplay: true,
         loop: true,
         path: 'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
-        renderer: 'svg'
+        renderer: 'svg',
+        beforeInit: async () => {
+          await new Promise<void>(resolve => {
+            setTimeout(() => {
+              resolve()
+            }, 1000)
+          })
+        }
       },
       slots: {
         loading: 'Loading...'
