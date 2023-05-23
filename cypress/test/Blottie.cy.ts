@@ -33,7 +33,7 @@ describe('<Blottie />', () => {
   it('slot', () => {
     cy.mount(Blottie, {
       attrs: {
-        class: 'animation'
+        class: 'animation',
       },
       props: {
         autoplay: true,
@@ -41,21 +41,20 @@ describe('<Blottie />', () => {
         path: 'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
         renderer: 'svg',
         beforeInit: async () => {
-          await new Promise<void>(resolve => {
+          await new Promise<void>((resolve) => {
             setTimeout(() => {
               resolve()
             }, 1000)
           })
-        }
+        },
       },
       slots: {
-        loading: 'Loading...'
-      }
+        loading: 'Loading...',
+      },
     })
 
     cy.get('.animation').should('have.text', 'Loading...')
   })
-
 
   it('events', () => {
     const onReadySpy = cy.spy().as('onReadySpy')
