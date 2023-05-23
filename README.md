@@ -2,7 +2,7 @@
 
 # Blottie
 
-> Lottie component for VueJS 3 / Nuxt 3
+> Lottie component for Vue 3 / Nuxt 3
 
 Blottie is the verb `blottir` in french meaning `snuggle` (yes I was looking for a word to respect the Vue tradition).
 
@@ -34,10 +34,10 @@ import { Blottie, type BlottieExpose } from 'blottie'
 
 const blottie = ref<BlottieExpose>()
 
-const onFrame = (anim?: AnimationItem) => {
+function onFrame(anim?: AnimationItem) {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
-const onReady = (anim?: AnimationItem) => {
+function onReady(anim?: AnimationItem) {
   anim?.play()
 }
 </script>
@@ -45,11 +45,11 @@ const onReady = (anim?: AnimationItem) => {
 <template>
   <Blottie
     ref="blottie"
-    @ready="onReady"
-    @enter-frame="onFrame"
     :loop="true"
     renderer="svg"
     path="/my-lottie-anim.json"
+    @ready="onReady"
+    @enter-frame="onFrame"
   />
 </template>
 ```
@@ -75,11 +75,12 @@ If needed, you can access the lottie player before the lottie `loadAnimation` me
 
 This is necessary for allowing to use `setLocationHref` to [fix Safari issue](https://github.com/airbnb/lottie-web#issues).
 
+```vue
 <script setup lang="ts">
 import type { LottiePlayer } from 'lottie-web'
 import { Blottie } from './../..'
 
-const beforeInit = async (player: LottiePlayer) => {
+async function beforeInit(player: LottiePlayer) {
   console.log(player)
 }
 </script>
@@ -94,6 +95,7 @@ const beforeInit = async (player: LottiePlayer) => {
     />
   </div>
 </template>
+```
 
 An additional prop `container-tag` is available to change the default `div` tag container.
 
@@ -110,11 +112,9 @@ The Blottie component exposes all [lottie events](https://github.com/airbnb/lott
 ```ts
 import type { AnimationItem, LottiePlayer } from 'lottie-web'
 
-const onFrame = (
-  anim?: AnimationItem,
+function onFrame(anim?: AnimationItem,
   lottie?: LottiePlayer,
-  container?: HTMLElement
-) => {
+  container?: HTMLElement) {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
 ```
@@ -135,23 +135,29 @@ const blottie = ref<BlottieExpose>()
 <template>
   <div>
     <Blottie
+      ref="blottie"
       class="animation"
       :animation-data="animationData"
-      ref="blottie"
       renderer="canvas"
     />
-    <div class="controls" v-if="blottie && blottie.anim">
+    <div v-if="blottie && blottie.anim" class="controls">
       <progress
         :value="blottie.anim.currentFrame"
         :max="blottie.anim.totalFrames"
       />
-      <button @click="blottie?.anim.play()">Play</button>
-      <button @click="blottie?.anim.pause()">Pause</button>
-      <button @click="blottie?.anim.stop()">Stop</button>
+      <button @click="blottie?.anim.play()">
+        Play
+      </button>
+      <button @click="blottie?.anim.pause()">
+        Pause
+      </button>
+      <button @click="blottie?.anim.stop()">
+        Stop
+      </button>
       <button
         @click="
           blottie?.anim.setDirection(
-            blottie?.anim.playDirection === -1 ? 1 : -1
+            blottie?.anim.playDirection === -1 ? 1 : -1,
           )
         "
       >
@@ -169,7 +175,9 @@ You can use the slot `loading` to insert content inside the container to wait th
 ```vue
 <template>
   <Blottie :autoplay="true" :loop="true" path="/my-lottie-anim.json">
-    <template #loading>Loading...</template>
+    <template #loading>
+      Loading...
+    </template>
   </Blottie>
 </template>
 ```

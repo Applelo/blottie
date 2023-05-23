@@ -1,11 +1,11 @@
-import Blottie from '../../src/components/Blottie.vue'
 import animVueJS from '../fixtures/vue-js.json'
+import { Blottie } from './../../src'
 
 describe('<Blottie />', () => {
   const types = {
     html: 'div',
     canvas: 'canvas',
-    svg: 'svg'
+    svg: 'svg',
   }
 
   for (const key in types) {
@@ -15,14 +15,14 @@ describe('<Blottie />', () => {
       it(`renderer ${key}`, () => {
         cy.mount(Blottie, {
           attrs: {
-            class: 'animation'
+            class: 'animation',
           },
           props: {
             autoplay: true,
             loop: true,
             animationData: animVueJS,
-            renderer: key
-          }
+            renderer: key,
+          },
         })
 
         cy.get(`.animation > ${tag}`)
@@ -34,17 +34,17 @@ describe('<Blottie />', () => {
   it.skip('slot', () => {
     cy.mount(Blottie, {
       attrs: {
-        class: 'animation'
+        class: 'animation',
       },
       props: {
         autoplay: true,
         loop: true,
         path: 'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
-        renderer: 'svg'
+        renderer: 'svg',
       },
       slots: {
-        loading: 'Loading...'
-      }
+        loading: 'Loading...',
+      },
     })
 
     cy.get('.animation').should('have.text', 'Loading...')
@@ -65,8 +65,8 @@ describe('<Blottie />', () => {
         onReady: onReadySpy,
         onEnterFrame: onEnterFrameSpy,
         onDrawnFrame: onDrawnFrameSpy,
-        onLoopComplete: onLoopCompleteSpy
-      }
+        onLoopComplete: onLoopCompleteSpy,
+      },
     })
 
     cy.get('@onReadySpy').should('have.been.calledOnce')

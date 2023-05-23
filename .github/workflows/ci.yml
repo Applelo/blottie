@@ -19,12 +19,12 @@ jobs:
 
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7
+          version: 8
 
       - name: Set node version to 16
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           # cache: pnpm
 
       # - name: Cache Cypress binary
@@ -53,12 +53,12 @@ jobs:
 
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7
+          version: 8
 
       - name: Set node version to 16
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: pnpm
 
       - name: Install
@@ -69,9 +69,6 @@ jobs:
 
       - name: Lint
         run: pnpm lint
-
-      - name: Check formatting
-        run: pnpm format:check
 
       - name: Typecheck
         run: pnpm typecheck

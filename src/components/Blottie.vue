@@ -1,33 +1,17 @@
 <script lang="ts" setup>
 import type {
+  AnimationEventName,
   AnimationItem,
   AnimationSegment,
-  AnimationEventName,
   CanvasRendererConfig,
   HTMLRendererConfig,
   LottiePlayer,
   RendererType,
-  SVGRendererConfig
+  SVGRendererConfig,
 } from 'lottie-web'
+import { onMounted, onUnmounted, ref } from 'vue'
 import type { BlottiePlayer } from '../typings/blottie'
-import { ref, onMounted, onUnmounted } from 'vue'
 import getPlayer from './../utils/getPlayer'
-
-const events: AnimationEventName[] = [
-  'enterFrame',
-  'loopComplete',
-  'complete',
-  'segmentStart',
-  'destroy',
-  'config_ready',
-  'data_ready',
-  'DOMLoaded',
-  'error',
-  'data_failed',
-  'loaded_images',
-  //@ts-ignore exists on lottie player but not in the typescript definition
-  'drawnFrame'
-]
 
 const props = withDefaults(
   defineProps<{
@@ -88,8 +72,8 @@ const props = withDefaults(
     }
   }>(),
   {
-    containerTag: 'div'
-  }
+    containerTag: 'div',
+  },
 )
 
 const emit = defineEmits<{
@@ -173,29 +157,47 @@ const emit = defineEmits<{
   ): void
 }>()
 
+const events: AnimationEventName[] = [
+  'enterFrame',
+  'loopComplete',
+  'complete',
+  'segmentStart',
+  'destroy',
+  'config_ready',
+  'data_ready',
+  'DOMLoaded',
+  'error',
+  'data_failed',
+  'loaded_images',
+  // exists on lottie player but not in the typescript definition
+  'drawnFrame',
+]
+
 const container = ref<HTMLElement>()
 const lottie = ref<LottiePlayer>()
 const anim = ref<AnimationItem>()
 const pending = ref<boolean>(true)
 
 onMounted(async () => {
-  if (!container.value || typeof window === 'undefined') return
+  if (!container.value || typeof window === 'undefined')
+    return
 
   lottie.value = await getPlayer(props.renderer, props.player)
-  if (props.beforeInit) await props.beforeInit(lottie.value)
+  if (props.beforeInit)
+    await props.beforeInit(lottie.value)
 
   const options = {
     container: container.value,
-    ...props
+    ...props,
   }
 
   anim.value = lottie.value.loadAnimation(options)
   emit('ready', anim.value, lottie.value, container.value)
   pending.value = false
 
-  events.forEach(event => {
+  events.forEach((event) => {
     anim.value?.addEventListener(event, () => {
-      //@ts-ignore
+      // @ts-expect-error   // @ts-expect-error drawnFrame exists on lottie player but not in the typescript definition
       emit(event, anim.value, lottie.value, container.value)
     })
   })

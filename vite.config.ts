@@ -1,5 +1,5 @@
-import { resolve } from 'path'
-import { URL, fileURLToPath } from 'url'
+import { resolve } from 'node:path'
+import { URL, fileURLToPath } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
@@ -9,7 +9,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'blottie',
-      fileName: 'blottie'
+      fileName: 'blottie',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -19,15 +19,15 @@ export default defineConfig({
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          vue: 'Vue'
-        }
-      }
-    }
+          vue: 'Vue',
+        },
+      },
+    },
   },
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 })
