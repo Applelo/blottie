@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import type { AnimationItem, LottiePlayer } from 'lottie-web'
 import { ref } from 'vue'
-import { Blottie, type BlottieExpose } from './../..'
+import { Blottie, type BlottieExpose } from './../../src'
 import animVueJS from './assets/vue-js.json'
 
 const frame = ref(0)
 const animationData = ref(animVueJS)
 const blottie = ref<BlottieExpose>()
 
-const onFrame = (anim?: AnimationItem) => {
+function onFrame(anim?: AnimationItem) {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
-const onReady = (anim?: AnimationItem | undefined) => {
+function onReady(anim?: AnimationItem | undefined) {
   anim?.play()
 }
 
-const beforeInit = async (player: LottiePlayer) => {
+async function beforeInit(player: LottiePlayer) {
+  // eslint-disable-next-line no-console
   console.log(player)
 }
 </script>
@@ -27,43 +28,51 @@ const beforeInit = async (player: LottiePlayer) => {
     <Blottie
       class="animation"
       path="vue-js.json"
-      @enter-frame="onFrame"
       :before-init="beforeInit"
       :autoplay="true"
       :loop="true"
       renderer="html"
+      @enter-frame="onFrame"
     />
 
     <h2>Distance Animation from LottieFiles</h2>
     <Blottie
       class="animation"
       path="https://assets6.lottiefiles.com/packages/lf20_bXGMKilbSf.json"
-      @ready="onReady"
       :loop="true"
       container-tag="main"
+      @ready="onReady"
     >
-      <template #loading> Loading... </template>
+      <template #loading>
+        Loading...
+      </template>
     </Blottie>
 
     <h2>Loading from data with controls</h2>
     <Blottie
+      ref="blottie"
       class="animation"
       :animation-data="animationData"
-      ref="blottie"
       renderer="canvas"
     />
-    <div class="controls" v-if="blottie && blottie.anim">
+    <div v-if="blottie && blottie.anim" class="controls">
       <progress
         :value="blottie.anim?.currentFrame"
         :max="blottie.anim?.totalFrames"
       />
-      <button @click="blottie?.anim?.play()">Play</button>
-      <button @click="blottie?.anim?.pause()">Pause</button>
-      <button @click="blottie?.anim?.stop()">Stop</button>
+      <button @click="blottie?.anim?.play()">
+        Play
+      </button>
+      <button @click="blottie?.anim?.pause()">
+        Pause
+      </button>
+      <button @click="blottie?.anim?.stop()">
+        Stop
+      </button>
       <button
         @click="
           blottie?.anim?.setDirection(
-            blottie?.anim?.playDirection === -1 ? 1 : -1
+            blottie?.anim?.playDirection === -1 ? 1 : -1,
           )
         "
       >

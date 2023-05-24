@@ -1,19 +1,19 @@
 import type { LottiePlayer, RendererType } from 'lottie-web'
-import { BlottiePlayer } from '../typings/blottie'
+import type { BlottiePlayer } from '../typings/blottie'
 
 export default async (renderer?: RendererType, player?: BlottiePlayer) => {
   let lottie: LottiePlayer | null = null
   const playerForRenderers: Record<RendererType, BlottiePlayer> = {
     svg: 'light',
     canvas: 'light_canvas',
-    html: 'light_html'
+    html: 'light_html',
   }
 
-  if (!player && typeof renderer === 'string') {
+  if (!player && typeof renderer === 'string')
     player = playerForRenderers[renderer]
-  } else {
+
+  else
     player = 'default'
-  }
 
   switch (player) {
     case 'canvas_worker':
