@@ -1,9 +1,9 @@
 {
   "name": "blottie",
   "type": "module",
-  "version": "1.1.1",
-  "packageManager": "pnpm@8.5.1",
-  "description": "Lottie component for VueJS 3 / Nuxt 3 ",
+  "version": "1.1.2",
+  "packageManager": "pnpm@8.6.0",
+  "description": "Lottie component for VueJS 3 / Nuxt 3",
   "author": "Applelo",
   "license": "GPL-3.0",
   "homepage": "https://github.com/Applelo/blottie",
@@ -24,8 +24,8 @@
   ],
   "exports": {
     ".": {
-      "require": "./dist/blottie.umd.cjs",
-      "import": "./dist/blottie.js"
+      "import": "./dist/blottie.js",
+      "require": "./dist/blottie.umd.cjs"
     }
   },
   "main": "./dist/blottie.umd.cjs",
@@ -52,19 +52,19 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "lottie-web": "^5.11.0"
+    "lottie-web": "^5.12.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.3",
-    "@types/node": "^18.16.14",
+    "@antfu/eslint-config": "^0.40.0",
+    "@types/node": "^18.17.3",
     "@vitejs/plugin-vue": "^4.2.3",
-    "cypress": "^12.13.0",
-    "eslint": "^8.41.0",
+    "cypress": "^12.17.3",
+    "eslint": "^8.46.0",
     "lodash.get": "^4.4.2",
-    "typescript": "^5.0.4",
-    "vite": "^4.3.8",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.8",
     "vue": "^3.3.4",
-    "vue-tsc": "^1.6.5"
+    "vue-tsc": "^1.8.8"
   },
   "publishConfig": {
     "access": "public"

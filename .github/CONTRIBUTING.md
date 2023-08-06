@@ -10,7 +10,7 @@ Always try to provide as much information as possible. If you are reporting a bu
 
 ### Feature requests
 
-Lay out the reasoning behind it and propose an API for it. Ideally, you should have a practical example to prove the utility of the feature you're requesting.
+Lay out the reasoning behind it and ideally, you should have a practical example to prove the utility of the feature you're requesting.
 
 ## Pull Requests
 
