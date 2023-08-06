@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { AnimationItem, LottiePlayer } from 'lottie-web'
 import { ref } from 'vue'
-import { Blottie, type BlottieExpose } from './../../src'
+import { Blottie, type BlottieExpose } from './../../'
 import animVueJS from './assets/vue-js.json'
 
 const frame = ref(0)
