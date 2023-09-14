@@ -12,7 +12,7 @@ on:
 jobs:
   cypress:
     runs-on: ubuntu-latest
-    name: 'Cypress: node-16, ubuntu-latest'
+    name: 'Cypress: node-18, ubuntu-latest'
 
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
         with:
           version: 8
 
-      - name: Set node version to 16
+      - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -44,7 +44,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    name: 'Lint: node-16, ubuntu-latest'
+    name: 'Lint: node-18, ubuntu-latest'
 
     steps:
       - uses: actions/checkout@v3
@@ -55,7 +55,7 @@ jobs:
         with:
           version: 8
 
-      - name: Set node version to 16
+      - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
           node-version: 18
