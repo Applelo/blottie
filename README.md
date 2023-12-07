@@ -112,9 +112,7 @@ The Blottie component exposes all [lottie events](https://github.com/airbnb/lott
 ```ts
 import type { AnimationItem, LottiePlayer } from 'lottie-web'
 
-function onFrame(anim?: AnimationItem,
-  lottie?: LottiePlayer,
-  container?: HTMLElement) {
+function onFrame(anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
 ```
