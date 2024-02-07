@@ -10,7 +10,7 @@ import type {
   SVGRendererConfig,
 } from 'lottie-web'
 import { onMounted, onUnmounted, ref } from 'vue'
-import type { BlottiePlayer } from '../typings/blottie'
+import type { BlottieEmitEvents, BlottiePlayer } from '../typings/blottie'
 import getPlayer from './../utils/getPlayer'
 
 const props = withDefaults(
@@ -76,86 +76,7 @@ const props = withDefaults(
   },
 )
 
-const emit = defineEmits<{
-  (
-    event: 'ready',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'enterFrame',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'loopComplete',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'complete',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'segmentStart',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'destroy',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'config_ready',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'data_ready',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'DOMLoaded',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'error',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'data_failed',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'loaded_images',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-  (
-    event: 'drawnFrame',
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement
-  ): void
-}>()
+const emit = defineEmits<BlottieEmitEvents>()
 
 const events: AnimationEventName[] = [
   'enterFrame',
@@ -169,7 +90,6 @@ const events: AnimationEventName[] = [
   'error',
   'data_failed',
   'loaded_images',
-  // exists on lottie player but not in the typescript definition
   'drawnFrame',
 ]
 
@@ -197,8 +117,7 @@ onMounted(async () => {
 
   events.forEach((event) => {
     anim.value?.addEventListener(event, () => {
-      // @ts-expect-error   // @ts-expect-error drawnFrame exists on lottie player but not in the typescript definition
-      emit(event, anim.value, lottie.value, container.value)
+      emit(event as any, anim.value, lottie.value, container.value)
     })
   })
 })

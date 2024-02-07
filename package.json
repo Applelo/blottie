@@ -1,11 +1,11 @@
 {
   "name": "blottie",
   "type": "module",
-  "version": "1.1.4",
-  "packageManager": "pnpm@8.11.0",
+  "version": "1.2.0",
+  "packageManager": "pnpm@8.15.1",
   "description": "Lottie component for VueJS 3 / Nuxt 3",
   "author": "Applelo",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "homepage": "https://github.com/Applelo/blottie",
   "repository": {
     "type": "git",
