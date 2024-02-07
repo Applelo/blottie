@@ -63,12 +63,12 @@ const props = withDefaults(
       canvas: CanvasRendererConfig
       html: HTMLRendererConfig
     }[RendererType]
-    audioFactory?(assetPath: string): {
-      play(): void
-      seek(): void
-      playing(): void
-      rate(): void
-      setVolume(): void
+    audioFactory?: (assetPath: string) => {
+      play: () => void
+      seek: () => void
+      playing: () => void
+      rate: () => void
+      setVolume: () => void
     }
   }>(),
   {
