@@ -8,7 +8,10 @@ import type {
 import type { BlottieOptions } from '../typings/blottie'
 import getPlayer from './../utils/getPlayer'
 
-export function useBlottie(container: Ref<HTMLElement | null | undefined>, opts: BlottieOptions) {
+export function useBlottie(
+  container: Ref<HTMLElement | null | undefined>,
+  opts: BlottieOptions
+) {
   const lottie = ref<LottiePlayer>()
   const anim = ref<AnimationItem>()
 
