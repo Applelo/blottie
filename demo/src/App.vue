@@ -12,13 +12,13 @@ function onFrame(anim?: AnimationItem) {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
 function onReady(anim?: AnimationItem | undefined) {
-  console.log('READY')
+  console.log('READY', anim)
   anim?.play()
 }
 
 async function beforeInit(player: LottiePlayer) {
   // eslint-disable-next-line no-console
-  console.log('Before Init', player)
+  console.log('beforeInit', player)
 }
 </script>
 
