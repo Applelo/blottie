@@ -6,11 +6,11 @@ import type {
   RendererType,
 } from 'lottie-web'
 import getPlayer from './../utils/getPlayer'
-import { LottieOptions } from '@/typings/blottie'
+import type { LottieOptions } from '@/typings/blottie'
 
 export function useBlottie(
   container: Ref<HTMLElement | null | undefined>,
-  opts: LottieOptions
+  opts: LottieOptions,
 ) {
   const lottie = shallowRef<LottiePlayer>()
   const anim = shallowRef<AnimationItem>()
@@ -26,7 +26,7 @@ export function useBlottie(
     lottie.value = await getPlayer(renderer, opts.player)
     anim.value = lottie.value.loadAnimation({
       container: container.value,
-      ...opts
+      ...opts,
     })
   })
 

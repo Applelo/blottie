@@ -2,7 +2,7 @@
   "name": "blottie",
   "type": "module",
   "version": "2.0.0",
-  "packageManager": "pnpm@8.15.1",
+  "packageManager": "pnpm@9.0.2",
   "description": "Lottie component for VueJS 3 / Nuxt 3",
   "author": "Applelo",
   "license": "MIT",

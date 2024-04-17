@@ -2,7 +2,7 @@
 import type { AnimationEventName, LottiePlayer } from 'lottie-web'
 import { onUnmounted, ref, watch } from 'vue'
 import type { BlottieEmitEvents, LottieOptions } from '../typings/blottie'
-import { useBlottie } from '@/composables/blottie';
+import { useBlottie } from '@/composables/blottie'
 
 const props = withDefaults(
   defineProps<{

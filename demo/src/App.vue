@@ -34,10 +34,10 @@ async function beforeInit(player: LottiePlayer) {
           path: 'vue-js.json',
           autoplay: true,
           renderer: 'html',
-          loop: true
+          loop: true,
         }"
-      :before-init="beforeInit"
-      @enter-frame="onFrame"
+        :before-init="beforeInit"
+        @enter-frame="onFrame"
       />
     </div>
 
@@ -88,6 +88,6 @@ async function beforeInit(player: LottiePlayer) {
           Reverse
         </button>
       </div>
-    </div>-->
+    </div> -->
   </div>
 </template>
