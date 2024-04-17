@@ -17,28 +17,6 @@ export interface BlottieExpose {
   container?: HTMLElement
 }
 
-// export interface BlottieOptions {
-//   /**
-//    * Lottie player loaded by Blottie
-//    *
-//    * @default 'undefined'
-//    */
-//   player?: BlottiePlayer
-//   /**
-//    * Callback before loadAnimation allowing to setLocationHref to fix Safari issue
-//    *
-//    * @see https://github.com/airbnb/lottie-web#issues
-//    * @default 'undefined'
-//    */
-//   beforeInit?: (lottie: LottiePlayer) => Promise<void>
-// }
-
-// export type BlottieEmitEvents = Record<AnimationEventName | 'ready', [
-//   anim?: AnimationItem,
-//   lottie?: LottiePlayer,
-//   container?: HTMLElement,
-// ]>
-
 /* eslint-disable ts/consistent-type-definitions */
 export type BlottieEmitEvents = {
   ready: [
@@ -119,26 +97,10 @@ type BlottieOptionsPart<T extends BlottiePlayer> = {
   player?: T
 }
 
-type BlottieOptionsSvg = BlottieOptionsPart<'default'> | BlottieOptionsPart<'svg'> | BlottieOptionsPart<'light'> | BlottieOptionsPart<'worker'> & AnimationConfigWith<'svg'>
+type BlottieOptionsSvg = (BlottieOptionsPart<'default'> | BlottieOptionsPart<'svg'> | BlottieOptionsPart<'light'> | BlottieOptionsPart<'worker'>) & AnimationConfigWith<'svg'>
 
-type BlottieOptionsCanvas = BlottieOptionsPart<'canvas'> | BlottieOptionsPart<'canvas_worker'> | BlottieOptionsPart<'light_canvas'> & AnimationConfigWith<'canvas'>
+type BlottieOptionsCanvas = (BlottieOptionsPart<'canvas'> | BlottieOptionsPart<'canvas_worker'> | BlottieOptionsPart<'light_canvas'>) & AnimationConfigWith<'canvas'>
 
-type BlottieOptionsHTML = BlottieOptionsPart<'html'> | BlottieOptionsPart<'light_html'> & AnimationConfigWith<'html'>
+type BlottieOptionsHTML = (BlottieOptionsPart<'html'> | BlottieOptionsPart<'light_html'>) & AnimationConfigWith<'html'>
 
-export type BlottieOptions = BlottieOptionsSvg | BlottieOptionsCanvas | BlottieOptionsHTML
-
-export type BlottieOptionsComponent = BlottieOptions & {
-  /**
-   * Tag of the container
-   *
-   * @default 'div'
-   */
-  containerTag?: string
-  /**
-   * Callback before loadAnimation allowing to setLocationHref to fix Safari issue
-   *
-   * @see https://github.com/airbnb/lottie-web#issues
-   * @default 'undefined'
-   */
-  beforeInit?: (lottie: LottiePlayer) => Promise<void>
-}
+export type LottieOptions = Omit<BlottieOptionsSvg | BlottieOptionsCanvas | BlottieOptionsHTML, 'container'>

@@ -1,11 +1,26 @@
 <script lang="ts" setup>
-import type { AnimationEventName } from 'lottie-web'
+import type { AnimationEventName, LottiePlayer } from 'lottie-web'
 import { onUnmounted, ref, watch } from 'vue'
-import type { BlottieEmitEvents, BlottieOptionsComponent } from '../typings/blottie'
-import { useBlottie } from './../composables/blottie'
+import type { BlottieEmitEvents, LottieOptions } from '../typings/blottie'
+import { useBlottie } from '@/composables/blottie';
 
 const props = withDefaults(
-  defineProps<BlottieOptionsComponent>(),
+  defineProps<{
+    /**
+     * Tag of the container
+     *
+     * @default 'div'
+     */
+    containerTag?: string
+    /**
+     * Callback before loadAnimation allowing to setLocationHref to fix Safari issue
+     *
+     * @see https://github.com/airbnb/lottie-web#issues
+     * @default 'undefined'
+     */
+    beforeInit?: (lottie: LottiePlayer) => Promise<void>
+    lottie: LottieOptions
+  }>(),
   {
     containerTag: 'div',
   },
@@ -29,22 +44,16 @@ const events: AnimationEventName[] = [
 ]
 
 const container = ref<HTMLElement>()
-const { lottie, anim } = useBlottie(container, props as any)
+const { lottie, anim } = useBlottie(container, props.lottie)
 const pending = ref<boolean>(true)
 
 watch(lottie, async () => {
-  if (!container.value || !lottie.value)
+  if (!container.value || !lottie.value || !pending.value)
     return
 
   if (props.beforeInit)
     await props.beforeInit(lottie.value)
 
-  const options = {
-    container: container.value,
-    ...props,
-  }
-
-  anim.value = lottie.value.loadAnimation(options)
   emit('ready', anim.value, lottie.value, container.value)
   pending.value = false
 
