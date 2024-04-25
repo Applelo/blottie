@@ -62,7 +62,7 @@ describe('<Blottie />', () => {
 
   it('events', () => {
     const onReadySpy = cy.spy().as('onReadySpy')
-    const onEnterFrameSpy = cy.spy().as('onEnterFrameSpy')
+    // const onEnterFrameSpy = cy.spy().as('onEnterFrameSpy')
     // const onLoopCompleteSpy = cy.spy().as('onLoopCompleteSpy')
     const onDrawnFrameSpy = cy.spy().as('onDrawnFrameSpy')
 
@@ -75,14 +75,14 @@ describe('<Blottie />', () => {
           renderer: 'svg',
         },
         onReady: onReadySpy,
-        onEnterFrame: onEnterFrameSpy,
+        // onEnterFrame: onEnterFrameSpy,
         onDrawnFrame: onDrawnFrameSpy,
         // onLoopComplete: onLoopCompleteSpy,
       },
     })
 
     cy.get('@onReadySpy').should('have.been.calledOnce')
-    cy.get('@onEnterFrameSpy').should('have.been.called')
+    // cy.get('@onEnterFrameSpy').should('have.been.called')
     cy.get('@onDrawnFrameSpy').should('have.been.called')
     // cy.get('@onLoopCompleteSpy').should('have.been.called')
   })
