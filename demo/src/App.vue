@@ -12,7 +12,6 @@ function onFrame(anim?: AnimationItem) {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
 }
 function onReady(anim?: AnimationItem | undefined) {
-  console.log('READY', anim)
   anim?.play()
 }
 
@@ -41,11 +40,13 @@ async function beforeInit(player: LottiePlayer) {
       />
     </div>
 
-    <!-- <div>
+    <div>
       <h2>Distance Animation from LottieFiles</h2>
       <Blottie
         class="animation"
-        path="https://assets6.lottiefiles.com/packages/lf20_bXGMKilbSf.json"
+        :lottie="{
+          path: 'https://assets6.lottiefiles.com/packages/lf20_bXGMKilbSf.json',
+        }"
         :loop="true"
         container-tag="main"
         @ready="onReady"
@@ -54,15 +55,17 @@ async function beforeInit(player: LottiePlayer) {
           Loading...
         </template>
       </Blottie>
-    </div> -->
+    </div>
 
-    <!-- <div>
+    <div>
       <h2>Loading from data with controls</h2>
       <Blottie
         ref="blottie"
         class="animation"
-        :animation-data="animationData"
         renderer="canvas"
+        :lottie="{
+          animationData,
+        }"
       />
       <div v-if="blottie && blottie.anim" class="controls">
         <progress
@@ -88,6 +91,6 @@ async function beforeInit(player: LottiePlayer) {
           Reverse
         </button>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>

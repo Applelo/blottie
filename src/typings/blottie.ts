@@ -40,7 +40,7 @@ export type BlottieEmitEvents = {
   drawnFrame: BlottieEmitEventsData
 }
 
-type AnimationConfigWith<T extends RendererType = 'svg'> = AnimationConfigWithPath<T> | AnimationConfigWithData<T>
+type AnimationConfigWith<T extends RendererType = 'svg'> = AnimationConfigWithPath<T> & AnimationConfigWithData<T>
 
 type BlottieOptionsPart<T extends BlottiePlayer> = {
   /**
