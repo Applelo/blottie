@@ -19,6 +19,11 @@ async function beforeInit(player: LottiePlayer) {
   // eslint-disable-next-line no-console
   console.log('beforeInit', player)
 }
+
+async function onLoop() {
+  // eslint-disable-next-line no-console
+  console.log('loop')
+}
 </script>
 
 <template>
@@ -45,11 +50,12 @@ async function beforeInit(player: LottiePlayer) {
       <Blottie
         class="animation"
         :lottie="{
+          loop: true,
           path: 'https://assets6.lottiefiles.com/packages/lf20_bXGMKilbSf.json',
         }"
-        :loop="true"
         container-tag="main"
         @ready="onReady"
+        @loop-complete="onLoop"
       >
         <template #loading>
           Loading...
@@ -62,8 +68,8 @@ async function beforeInit(player: LottiePlayer) {
       <Blottie
         ref="blottie"
         class="animation"
-        renderer="canvas"
         :lottie="{
+          renderer: 'canvas',
           animationData,
         }"
       />

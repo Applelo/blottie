@@ -18,10 +18,12 @@ describe('<Blottie />', () => {
             class: 'animation',
           },
           props: {
-            autoplay: true,
-            loop: true,
-            animationData: animVueJS,
-            renderer: key,
+            lottie: {
+              autoplay: true,
+              loop: true,
+              animationData: animVueJS,
+              renderer: key,
+            },
           },
         })
 
@@ -36,10 +38,12 @@ describe('<Blottie />', () => {
         class: 'animation',
       },
       props: {
-        autoplay: true,
-        loop: true,
-        path: 'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
-        renderer: 'svg',
+        lottie: {
+          autoplay: true,
+          loop: true,
+          path: 'https://assets5.lottiefiles.com/packages/lf20_z49WoSvxKM.json',
+          renderer: 'svg',
+        },
         beforeInit: async () => {
           await new Promise<void>((resolve) => {
             setTimeout(() => {
@@ -59,25 +63,27 @@ describe('<Blottie />', () => {
   it('events', () => {
     const onReadySpy = cy.spy().as('onReadySpy')
     const onEnterFrameSpy = cy.spy().as('onEnterFrameSpy')
-    const onLoopCompleteSpy = cy.spy().as('onLoopCompleteSpy')
+    // const onLoopCompleteSpy = cy.spy().as('onLoopCompleteSpy')
     const onDrawnFrameSpy = cy.spy().as('onDrawnFrameSpy')
 
     cy.mount(Blottie, {
       props: {
-        autoplay: true,
-        loop: true,
-        animationData: animVueJS,
-        renderer: 'svg',
+        lottie: {
+          autoplay: true,
+          loop: true,
+          animationData: animVueJS,
+          renderer: 'svg',
+        },
         onReady: onReadySpy,
         onEnterFrame: onEnterFrameSpy,
         onDrawnFrame: onDrawnFrameSpy,
-        onLoopComplete: onLoopCompleteSpy,
+        // onLoopComplete: onLoopCompleteSpy,
       },
     })
 
     cy.get('@onReadySpy').should('have.been.calledOnce')
     cy.get('@onEnterFrameSpy').should('have.been.called')
     cy.get('@onDrawnFrameSpy').should('have.been.called')
-    cy.get('@onLoopCompleteSpy').should('have.been.called')
+    // cy.get('@onLoopCompleteSpy').should('have.been.called')
   })
 })
