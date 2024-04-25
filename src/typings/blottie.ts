@@ -17,73 +17,27 @@ export interface BlottieExpose {
   container?: HTMLElement
 }
 
+type BlottieEmitEventsData = [
+  anim?: AnimationItem,
+  lottie?: LottiePlayer,
+  container?: HTMLElement,
+]
+
 /* eslint-disable ts/consistent-type-definitions */
 export type BlottieEmitEvents = {
-  ready: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  enterFrame: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  loopComplete: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  complete: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  segmentStart: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  destroy: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  config_ready: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  data_ready: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  DOMLoaded: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  error: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  data_failed: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  loaded_images: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
-  drawnFrame: [
-    anim?: AnimationItem,
-    lottie?: LottiePlayer,
-    container?: HTMLElement,
-  ]
+  ready: BlottieEmitEventsData
+  enterFrame: BlottieEmitEventsData
+  loopComplete: BlottieEmitEventsData
+  complete: BlottieEmitEventsData
+  segmentStart: BlottieEmitEventsData
+  destroy: BlottieEmitEventsData
+  config_ready: BlottieEmitEventsData
+  data_ready: BlottieEmitEventsData
+  DOMLoaded: BlottieEmitEventsData
+  error: BlottieEmitEventsData
+  data_failed: BlottieEmitEventsData
+  loaded_images: BlottieEmitEventsData
+  drawnFrame: BlottieEmitEventsData
 }
 
 type AnimationConfigWith<T extends RendererType = 'svg'> = AnimationConfigWithPath<T> | AnimationConfigWithData<T>

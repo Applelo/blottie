@@ -2,7 +2,7 @@
   "name": "blottie",
   "type": "module",
   "version": "2.0.0",
-  "packageManager": "pnpm@9.0.2",
+  "packageManager": "pnpm@9.0.6",
   "description": "Lottie component for VueJS 3 / Nuxt 3",
   "author": "Applelo",
   "license": "MIT",
@@ -61,16 +61,16 @@
     "lottie-web": "^5.12.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.14.0",
+    "@antfu/eslint-config": "^2.16.0",
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
-    "cypress": "^13.7.3",
-    "eslint": "^9.0.0",
+    "cypress": "^13.8.1",
+    "eslint": "^9.1.1",
     "lodash.get": "^4.4.2",
     "typescript": "^5.4.5",
-    "vite": "^5.2.9",
-    "vue": "^3.4.23",
-    "vue-tsc": "^2.0.13"
+    "vite": "^5.2.10",
+    "vue": "^3.4.25",
+    "vue-tsc": "^2.0.14"
   },
   "publishConfig": {
     "access": "public"
