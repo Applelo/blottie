@@ -6,7 +6,7 @@ import type {
   RendererType,
 } from 'lottie-web'
 import getPlayer from './../utils/getPlayer'
-import type { LottieOptions } from '@/typings/blottie'
+import type { LottieOptions } from './../typings/blottie'
 
 export function useBlottie(
   container: Ref<HTMLElement | null | undefined>,
