@@ -1,7 +1,7 @@
 import type { PropType, SlotsType } from 'vue'
 import { defineComponent, h, onUnmounted, ref, watch } from 'vue'
 import type { AnimationEventName, LottiePlayer } from 'lottie-web'
-import { useBlottie } from './../composables/blottie'
+import { useBlottie } from '../composables/useBlottie'
 import type { LottieOptions } from './../typings/blottie'
 
 const events: AnimationEventName[] = [

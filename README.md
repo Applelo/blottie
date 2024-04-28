@@ -247,7 +247,7 @@ const { lottie, anim } = useBlottie(el, {
 </template>
 ```
 
-## Migration 1.0 to 2.0
+## Migration from 1.0 to 2.0
 
 All Lottie options are now move into `lottie` attribute to use typings from lottie (and not a version provided by Blottie).
 
