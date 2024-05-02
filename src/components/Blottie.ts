@@ -84,13 +84,19 @@ export default defineComponent({
 
     expose({ anim, lottie, container })
 
+    const loadingSlot = () => {
+      if (slots.loading && pending.value)
+        return slots.loading()
+      return null
+    }
+
     return (props: any) => {
       return h(
         props.containerTag,
         {
           ref: container,
         },
-        () => pending.value ? slots.loading : undefined,
+        loadingSlot(),
       )
     }
   },
