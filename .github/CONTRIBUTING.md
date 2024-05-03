@@ -14,14 +14,14 @@ Lay out the reasoning behind it and ideally, you should have a practical example
 
 ## Pull Requests
 
-I only accept contributions via Pull Requests on [Github](https://github.com/{{ githubAccount }}/{{ name }}).
+I only accept contributions via Pull Requests on [Github](https://github.com/Applelo/blottie).
 
 Here are some guidelines to make the process smoother and easier for me and you:
 
 - **Add a test** - New features and maybe bugs need tests. If you find it difficult to test, please tell me in the pull request and I will try to help you!
 - **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
-- **Run `pnpm test` locally** - This will allow you to go faster
-- **Run `pnpm lint` and `pnpm typechecking` locally** - This will prevent you to have surprise for not respecting eslint config and problem with typescript
+- **Run `pnpm cypress` locally** - This will allow you to go faster
+- **Run `pnpm lint` and `pnpm typecheck` locally** - This will prevent you to have surprise for not respecting eslint config and problem with typescript
 - **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
 - **Send coherent history** - Make sure your commits message means something
 
