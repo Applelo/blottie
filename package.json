@@ -61,16 +61,16 @@
     "lottie-web": "^5.12.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.16.0",
-    "@types/node": "^20.12.7",
+    "@antfu/eslint-config": "^2.16.1",
+    "@types/node": "^20.12.8",
     "@vitejs/plugin-vue": "^5.0.4",
     "cypress": "^13.8.1",
     "eslint": "^9.1.1",
     "lodash.get": "^4.4.2",
     "typescript": "^5.4.5",
-    "vite": "^5.2.10",
-    "vue": "^3.4.25",
-    "vue-tsc": "^2.0.14"
+    "vite": "^5.2.11",
+    "vue": "^3.4.26",
+    "vue-tsc": "^2.0.16"
   },
   "publishConfig": {
     "access": "public"
