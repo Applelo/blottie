@@ -1,6 +1,6 @@
 import type { PropType, SlotsType } from 'vue'
 import { defineComponent, h, onUnmounted, ref, watch } from 'vue'
-import type { AnimationEventName, LottiePlayer } from 'lottie-web'
+import type { AnimationEventName, AnimationItem, LottiePlayer } from 'lottie-web'
 import { useBlottie } from '../composables/useBlottie'
 import type { LottieOptions } from './../typings/blottie'
 
@@ -21,7 +21,49 @@ const events: AnimationEventName[] = [
 
 export default defineComponent({
   name: 'Blottie',
-  emits: ['ready', ...events],
+  /* eslint-disable unused-imports/no-unused-vars */
+  emits: {
+    ready: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    enterFrame: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    loopComplete: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    complete: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    segmentStart: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    destroy: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    config_ready: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    data_ready: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    DOMLoaded: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    error: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    data_failed: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    loaded_images: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+    drawnFrame: (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => {
+      return true
+    },
+  } satisfies Record<AnimationEventName | 'ready', (anim?: AnimationItem, lottie?: LottiePlayer, container?: HTMLElement) => true>,
+  /* eslint-enable unused-imports/no-unused-vars */
   props: {
     /**
      * Tag of the container
