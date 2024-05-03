@@ -8,6 +8,15 @@ import type {
 import getPlayer from '../utils/getPlayer'
 import type { LottieOptions } from '../typings/blottie'
 
+/**
+ * Blottie Composable using lottie loadAnimation under the hood
+ *
+ * @since 2.0.0
+ * @param container The Vue template ref
+ * @param opts The lottie loadAnimation options
+ * @see https://github.com/Applelo/blottie?tab=readme-ov-file#composable
+ * @see http://airbnb.io/lottie/#/web?id=usage
+ */
 export function useBlottie(
   container: Ref<HTMLElement | null | undefined>,
   opts: LottieOptions,

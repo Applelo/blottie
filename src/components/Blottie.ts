@@ -19,6 +19,13 @@ const events: AnimationEventName[] = [
   'drawnFrame',
 ]
 
+/**
+ * Blottie Component using lottie loadAnimation under the hood
+ *
+ * @since 1.0.0
+ * @see https://github.com/Applelo/blottie?tab=readme-ov-file#component
+ * @see http://airbnb.io/lottie/#/web?id=usage
+ */
 export default defineComponent({
   name: 'Blottie',
   /* eslint-disable unused-imports/no-unused-vars */

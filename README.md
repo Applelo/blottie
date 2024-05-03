@@ -226,6 +226,9 @@ import { Blottie } from 'blottie'
 
 Since 2.0, you can use the composable `useBlottie`. This allowing you full control to create a custom component if  you need it.
 
+The first argument is a [template ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs).
+The second argument is an object accepting all [loadAnimation options](https://github.com/airbnb/lottie-web#other-loading-options).
+
 ```vue
 <script setup lang="ts">
 import { useBlottie } from 'blottie'

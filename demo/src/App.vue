@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { AnimationItem, LottiePlayer } from 'lottie-web'
 import { ref } from 'vue'
-import { Blottie, type BlottieExpose } from 'blottie'
+import { Blottie, type BlottieExpose, useBlottie } from 'blottie'
 import animVueJS from './assets/vue-js.json'
 
 const frame = ref(0)
 const animationData = ref(animVueJS)
 const blottie = ref<BlottieExpose>()
+const composableEl = ref<HTMLElement | null>(null)
 
 function onFrame(anim?: AnimationItem) {
   frame.value = Math.round(anim ? anim.currentFrame : 0)
@@ -24,6 +25,16 @@ async function onLoop() {
   // eslint-disable-next-line no-console
   console.log('loop')
 }
+
+useBlottie(
+  composableEl,
+  {
+    path: 'vue-js.json',
+    autoplay: true,
+    renderer: 'svg',
+    loop: true,
+  },
+)
 </script>
 
 <template>
@@ -97,6 +108,11 @@ async function onLoop() {
           Reverse
         </button>
       </div>
+    </div>
+
+    <div>
+      <h2>Using useBlottie Composable</h2>
+      <div ref="composableEl" class="animation" />
     </div>
   </div>
 </template>
